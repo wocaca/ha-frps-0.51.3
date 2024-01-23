@@ -35,15 +35,15 @@ if [[ ! -n "${log_file}" ]]; then
     bashio::exit.nok
 fi
 
- curl -o /tmp/frp_0.9.3_linux_amd64.tar.gz -sSL https://github.com/fatedier/frp/releases/download/v0.9.3/frp_0.9.3_linux_amd64.tar.gz
+ curl -o /tmp/frp_0.9.3_linux_386.tar.gz -sSL https://github.com/fatedier/frp/releases/download/v0.9.3/frp_0.9.3_linux_386.tar.gz
  
- tar xzf /tmp/frp_0.9.3_linux_amd64.tar.gz -C /tmp
+ tar xzf /tmp/frp_0.9.3_linux_386.tar.gz -C /tmp
  
- cp  /tmp/frp_0.9.3_linux_amd64/frpc /usr/src/
- cp  /tmp/frp_0.9.3_linux_amd64/frps /usr/src/   
+ cp  /tmp/frp_0.9.3_linux_386/frpc /usr/src/
+ cp  /tmp/frp_0.9.3_linux_386/frps /usr/src/   
 cd /usr/src
-/tmp/frp_0.9.3_linux_amd64/frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
-/tmp/frp_0.9.3_linux_amd64/frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
+/tmp/frp_0.9.3_linux_386/frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
+/tmp/frp_0.9.3_linux_386/frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 ./frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 ./frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 trap "stop_frps" SIGTERM SIGHUP
