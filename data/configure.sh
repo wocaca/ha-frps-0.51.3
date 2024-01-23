@@ -30,7 +30,7 @@ function select_machine() {
 }
 
 function install() {
-    local machine="amd64"
+    local machine="386"
     local file_name="frp_${version}_linux_${machine}.tar.gz"
     local file_url="${frp_url}v${version}/${file_name}"
     local file_dir=$(echo ${file_name} | sed 's/.tar.gz//')
