@@ -26,12 +26,11 @@ function select_machine() {
     esac;
 
 
-    machine="amd64"
-    echo "$machine"
+   echo "$machine"
 }
 
 function install() {
-    local machine=$(select_machine)
+    local machine="amd64"
     local file_name="frp_${version}_linux_${machine}.tar.gz"
     local file_url="${frp_url}v${version}/${file_name}"
     local file_dir=$(echo ${file_name} | sed 's/.tar.gz//')
