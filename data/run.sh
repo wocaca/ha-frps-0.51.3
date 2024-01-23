@@ -36,9 +36,9 @@ if [[ ! -n "${log_file}" ]]; then
 fi
 
 cd /usr/src
+
+./frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 ./frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
-
-
 trap "stop_frps" SIGTERM SIGHUP
 
 # Wait and hold Add-on running
