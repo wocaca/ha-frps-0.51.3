@@ -3,7 +3,7 @@ set +u
 
 WAIT_PIDS=()
 ADDON_PATH='/share/frp'
-CONFIG_PATH='/share/frp/frpc.ini'
+CONFIG_PATH='/share/frp/frps.ini'
 
 function stop_frpc() {
     bashio::log.info "Shutdown frpc client"
@@ -36,10 +36,10 @@ if [[ ! -n "${log_file}" ]]; then
 fi
 
 cd /usr/src
-./frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
+./frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 
 
-trap "stop_frpc" SIGTERM SIGHUP
+trap "stop_frps" SIGTERM SIGHUP
 
 # Wait and hold Add-on running
 wait "${WAIT_PIDS[@]}"
