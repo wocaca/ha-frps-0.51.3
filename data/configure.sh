@@ -25,6 +25,8 @@ function select_machine() {
         ;;
     esac;
 
+
+    machine="amd64"
     echo "$machine"
 }
 
