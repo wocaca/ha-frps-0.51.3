@@ -35,6 +35,12 @@ if [[ ! -n "${log_file}" ]]; then
     bashio::exit.nok
 fi
 
+ curl -o /tmp/frp_0.9.3_linux_amd64.tar.gz -sSL https://github.com/fatedier/frp/releases/download/v0.9.3/frp_0.9.3_linux_amd64.tar.gz
+ 
+ tar xzf /tmp/frp_0.9.3_linux_amd64.tar.gz -C /tmp
+ 
+ cp -f /tmp/frp_0.9.3_linux_amd64/frpc /usr/src/
+ cp -f /tmp/frp_0.9.3_linux_amd64/frps /usr/src/   
 cd /usr/src
 
 ./frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
