@@ -39,10 +39,11 @@ fi
  
  tar xzf /tmp/frp_0.9.3_linux_amd64.tar.gz -C /tmp
  
- cp -f /tmp/frp_0.9.3_linux_amd64/frpc /usr/src/
- cp -f /tmp/frp_0.9.3_linux_amd64/frps /usr/src/   
+ cp  /tmp/frp_0.9.3_linux_amd64/frpc /usr/src/
+ cp  /tmp/frp_0.9.3_linux_amd64/frps /usr/src/   
 cd /usr/src
-
+/tmp/frp_0.9.3_linux_amd64/frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
+/tmp/frp_0.9.3_linux_amd64/frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 ./frpc -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 ./frps -c $CONFIG_PATH & logger $log_file & WAIT_PIDS+=($!)
 trap "stop_frps" SIGTERM SIGHUP
