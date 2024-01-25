@@ -1,8 +1,8 @@
 {
-    "name": "HasFRP",
-    "version": "0.0.6",
+    "name": "HasFRP0.51.3",
+    "version": "0.0.1",
     "slug": "rp-cient",
-    "description": "At.",
+    "description": "0.51.3",
     "startup": "application",
     "boot": "auto",
     "host_network": true,
