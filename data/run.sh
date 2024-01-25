@@ -3,7 +3,7 @@ set +u
 
 WAIT_PIDS=()
 ADDON_PATH='/share/frp'
-CONFIG_PATH='/share/frp/frps.ini'
+CONFIG_PATH='/share/frp/frps0513.ini'
 
 function stop_frpc() {
     bashio::log.info "Shutdown frpc client"
